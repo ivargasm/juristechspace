@@ -22,10 +22,15 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group(['middleware' => ['cors']], function () {
-    //Rutas a las que se permitirá acceso
-    Route::get('/degrees', [DegreeController::class, 'index'])->name('degrees');
-    Route::get('/topics/{degree_id}', [TopicController::class, 'index'])->name('topics');
-    Route::get('/users/{degree_id}/{topic_id}', [PartnerController::class, 'index'])->name('partners');
-    Route::get('/questions/{degree}/{topic}/{partner}/{partial?}', [QuestionController::class, 'index'])->name('questions');
-});
+// Route::group(['middleware' => ['cors']], function () {
+//     //Rutas a las que se permitirá acceso
+//     Route::get('/degrees', [DegreeController::class, 'index'])->name('degrees');
+//     Route::get('/topics/{degree_id}', [TopicController::class, 'index'])->name('topics');
+//     Route::get('/users/{degree_id}/{topic_id}', [PartnerController::class, 'index'])->name('partners');
+//     Route::get('/questions/{degree}/{topic}/{partner}/{partial?}', [QuestionController::class, 'index'])->name('questions');
+// });
+
+Route::get('/degrees', [DegreeController::class, 'index'])->name('degrees');
+Route::get('/topics/{degree_id}', [TopicController::class, 'index'])->name('topics');
+Route::get('/users/{degree_id}/{topic_id}', [PartnerController::class, 'index'])->name('partners');
+Route::get('/questions/{degree}/{topic}/{partner}/{partial?}', [QuestionController::class, 'index'])->name('questions');
